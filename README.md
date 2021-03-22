@@ -12,6 +12,8 @@ This project allows students to manage their courses and be up to date on their 
 
 ## Prototype
 
+![school-app-prototype](/images/school-app-prototype.png)
+
 ## Technologies
 
 Project is created with:
