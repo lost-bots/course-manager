@@ -6,12 +6,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 export default function Home({navigation}) {
     const onPressButton = () => {
-        navigation.navigate('GpaCalculator', { name: 'Jane' })
+        navigation.navigate('GpaCalculator')
     }
 
     return (
         <View style={styles.section}>
-            <Text style={styles.textSection}> Home Screen</Text>
             <Button
                 onPress={onPressButton}
                 title="GPA Calculator"
