@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 export default function GpaCalculator({navigation,route}) {
     return (
         <View style={styles.section}>
-            <Text style={styles.textSection}> This is {route.params.name}'s profile</Text>;
+            <Text style={styles.textSection}> This is {route.params.name}'s profile </Text>
         </View>
     );
 }
