@@ -16,9 +16,9 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Welcome" }}
+          options={{ title: "Course Manager" }}
         />
-        <Stack.Screen name="GpaCalculator" component={GpaCalculator} />
+        <Stack.Screen name="GpaCalculator" component={GpaCalculator} options={{title: "GPA Calculator"}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
