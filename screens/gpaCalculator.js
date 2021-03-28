@@ -47,17 +47,6 @@ export default function GpaCalculator({ navigation, route }) {
             <Picker.Item label="-" value="grade" />
             <Picker.Item label="A+" value="grade" />
             <Picker.Item label="A" value="grade" />
-            <Picker.Item label="A-" value="grade" />
-            <Picker.Item label="B+" value="grade" />
-            <Picker.Item label="B" value="grade" />
-            <Picker.Item label="B-" value="grade" />
-            <Picker.Item label="C+" value="grade" />
-            <Picker.Item label="C" value="grade" />
-            <Picker.Item label="C-" value="grade" />
-            <Picker.Item label="D+" value="grade" />
-            <Picker.Item label="D" value="grade" />
-            <Picker.Item label="D-" value="grade" />
-            <Picker.Item label="F" value="grade" />
           </Picker>
           <TextInput
             style={styles.inputSection}
