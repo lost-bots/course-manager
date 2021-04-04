@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import RNPickerSelect from 'react-native-picker-select';
+import { Checkbox } from 'react-native-paper';
+
 
 let courseObj = {};
 
@@ -21,16 +23,11 @@ export default function Input() {
         { label: 'D', value: 1.00 },
         { label: 'F', value: 0.00 },
     ];
-    let [course, setCourse] = useState('');
-    let [credit, setCredit] = useState('');
 
-    //setting the useState variables
-    let setCourseArr = (c) => {
-        setCourse(c);
-    }
-    let setCreditArr = (c) => {
-        setCredit(c);
-    }
+    const [course, setCourse] = useState('');
+    const [credit, setCredit] = useState('');
+    const [checked, setChecked] = useState(false);
+
     return (
         <View style={styles.termSection}>
             <View>
@@ -40,12 +37,13 @@ export default function Input() {
                 <Text style={styles.courseSection}> Course </Text>
                 <Text style={styles.gradeSection}> Grade </Text>
                 <Text style={styles.creditSection}> Credit </Text>
+                <Text style={styles.checkboxSection}></Text>
             </View >
 
             <View style={styles.rowContainer}>
                 <TextInput
                     style={styles.courseSection}
-                    onChangeText={setCourseArr}
+                    onChangeText={(input) => setCourse(input)}
                     onEndEditing={() => { courseObj.course = course }}
                     value={course}
                 />
@@ -57,11 +55,24 @@ export default function Input() {
                 </View>
                 <TextInput
                     style={styles.creditSection}
-                    onChangeText={setCreditArr}
-                    onEndEditing={() => { courseObj.credit = credit }}
+                    onChangeText={(input) => {
+                        setCredit(input);
+                        courseObj.credit = credit;
+                    }}
                     value={credit}
                 />
+                <View style={styles.checkboxSection}>
+                    <Checkbox
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked(!checked);
+                            courseObj.isChecked = !checked;
+
+                        }}
+                    />
+                </View>
             </View>
+            <Button title="show" onPress={() => { console.log(courseObj); }} />
         </View >
     );
 }
@@ -88,7 +99,6 @@ const styles = StyleSheet.create({
     gradeSection: {
         backgroundColor: 'lightblue',
         flex: 1,
-
     },
     courseSection: {
         backgroundColor: 'pink',
@@ -100,8 +110,10 @@ const styles = StyleSheet.create({
 
     },
     checkboxSection: {
-        backgroundColor: 'white',
         flex: 1,
+        borderRadius: 50,
+        height: 50,
+        width: 50,
     }
 
 })
