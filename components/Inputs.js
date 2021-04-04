@@ -3,109 +3,97 @@ import { StyleSheet, View, Text, Button, SafeAreaView, ScrollView } from 'react-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TextInput } from 'react-native-gesture-handler';
-import { Picker } from '@react-native-picker/picker';
-
+import RNPickerSelect from 'react-native-picker-select';
 
 let course = new Array();
 
 export default function Input() {
+
+    const gradeScale = [
+        { label: 'A+', value: 4.0 },
+        { label: 'A', value: 4.00 },
+        { label: 'A-', value: 3.70 },
+        { label: 'B+', value: 3.30 },
+        { label: 'B', value: 3.00 },
+        { label: 'B-', value: 2.70 },
+        { label: 'C+', value: 2.30 },
+        { label: 'C', value: 2.00 },
+        { label: 'C-', value: 1.70 },
+        { label: 'D+', value: 1.30 },
+        { label: 'D', value: 1.00 },
+        { label: 'F', value: 0.00 },
+    ];
     let [course, setCourse] = useState('');
     let [credit, setCredit] = useState('');
-    let [grade, setGrade] = useState('');
+    let [grade, setGrade] = useState(''); //ignore that grade, still being used. 
 
     let setCreditArr = (c) => {
-
         setCredit(c);
-        // console.log(course);
-        console.log(credit);
-        // course.add(credit);
     }
-
+    let setCourseArr = (c) => {
+        setCourse(c);
+    }
+    let setGradeArr = (v) => {
+        setGrade(v);
+    }
     return (
-        <View >
-            <View style={styles.termSection}>
-                <Text style={styles.textSection}> Term # </Text>
+        <View style={styles.termSection}>
+            <View>
+                <Text style={styles.inputSection}> Term # </Text>
             </View>
-            <View style={styles.headerRowContainer}>
-                <View style={styles.section}>
-                    <Text style={styles.textSection}> Course </Text>
-                </View>
-                <View style={styles.section}>
-                    <Text style={styles.textSection}> Grade </Text>
-                </View>
-                <View style={styles.section}>
-                    <Text style={styles.textSection}> Credit </Text>
-                </View>
-            </View>
+            <View style={styles.rowContainer}>
+                <Text style={styles.section}>Course </Text>
+                <Text style={styles.section}> Grade </Text>
+                <Text style={styles.section}> Credit </Text>
+            </View >
 
-            <View style={styles.bodyRowContainer}>
+            <View style={styles.rowContainer}>
                 <TextInput
-                    style={styles.inputSection}
-                    onChangeText={(text) => setCourse(text)}
+                    style={styles.section}
+                    onChangeText={setCourseArr}
                     value={course}
                 />
-                <Picker
-                    style={styles.scrollSection}
-                    selectedValue={grade}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setGrade(itemValue)
-                    }>
-                    <Picker.Item label="-" value="grade" />
-                    <Picker.Item label="A+" value="grade" />
-                    <Picker.Item label="A" value="grade" />
-                    <Picker.Item label="A-" value="grade" />
-                    <Picker.Item label="B+" value="grade" />
-                    <Picker.Item label="B" value="grade" />
-                    <Picker.Item label="B-" value="grade" />
-                    <Picker.Item label="C+" value="grade" />
-                    <Picker.Item label="C" value="grade" />
-                    <Picker.Item label="C-" value="grade" />
-                    <Picker.Item label="D+" value="grade" />
-                    <Picker.Item label="D" value="grade" />
-                    <Picker.Item label="D-" value="grade" />
-                    <Picker.Item label="F" value="grade" />
-                </Picker>
+                <View style={styles.section}>
+                    <RNPickerSelect
+                        onValueChange={setGradeArr}
+                        items={gradeScale}
+                    />
+                </View>
                 <TextInput
-                    style={styles.inputSection}
+                    style={styles.section}
                     onChangeText={setCreditArr}
                     value={credit}
                 />
             </View>
-        </View>
+        </View >
     );
 }
-console.log(course.length)
 
 const styles = StyleSheet.create({
 
     termSection: {
-        marginTop: 12,
-        height: '10%',
-        width: '20%',
+        marginTop: '10%',
     },
-    headerRowContainer: {
+    rowContainer: {
         display: 'flex',
         flexDirection: 'row',
+        marginTop: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     bodyRowContainer: {
         marginTop: 34,
-        display: 'flex',
         flexDirection: 'row',
     },
     inputSection: {
         backgroundColor: 'lightgray',
-        height: '20%',
         marginRight: 35,
-    },
-    scrollSection: {
-        height: '10%',
-        width: '10%',
-        marginRight: 35,
-        marginTop: -99
+        marginLeft: 15,
     },
     section: {
         backgroundColor: 'lightblue',
-        marginRight: 30,
+        flex: 1,
+
     }
 
 })
