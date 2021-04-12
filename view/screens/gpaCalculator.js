@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
-import Inputs from "../components/Term/Inputs";
+import Term from "../../components/Term/Term";
+
+export default function GpaCalculator({ navigation, route }) {
+  return <Term />;
+}
 
 // return (
 //   <View>
@@ -50,6 +54,3 @@ import Inputs from "../components/Term/Inputs";
 //     </ScrollView>
 //   </View>
 // );
-export default function GpaCalculator({ navigation, route }) {
-  return <Inputs />;
-}
