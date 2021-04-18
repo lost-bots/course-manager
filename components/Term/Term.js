@@ -5,25 +5,27 @@ import Header from "./Header";
 import Input from "./Input";
 
 let courseArray = [];
-
+let key = 0;
 const Term = () => {
   const [courses, setCourses] = useState([]);
 
   function setDiv() {
-    let c = (
-      <View>
-        <Text> hii </Text>
-      </View>
-    );
-    console.log(courses.push(courses.props.children));
-    console.log("hhuuuu");
-    setCourses(c);
+    console.log(courses);
+
+    // setCourses([...courses, <Input />]) //array destructring
+    let newCourseArray = [...courses];
+    newCourseArray.push(<Input key={key++} />);
+    setCourses(newCourseArray);
   }
   return (
     <View style={styles.termSection}>
       <Header />
 
+      <View>
+        {courses}
+      </View>
       <Button title="Add Course" onPress={setDiv} />
+
       <Button
         title="show"
         onPress={() => {
