@@ -5,8 +5,8 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "./screens/home";
-import GpaCalculator from "./screens/gpaCalculator";
+import Home from "./view/screens/home";
+import GpaCalculator from "./view/screens/gpaCalculator";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -18,7 +18,11 @@ export default function App() {
           component={Home}
           options={{ title: "Course Manager" }}
         />
-        <Stack.Screen name="GpaCalculator" component={GpaCalculator} options={{title: "GPA Calculator"}}/>
+        <Stack.Screen
+          name="GpaCalculator"
+          component={GpaCalculator}
+          options={{ title: "GPA Calculator" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
