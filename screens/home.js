@@ -4,28 +4,40 @@ import GpaCalculator from './gpaCalculator';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Home({navigation}) {
-    const onPressButton = () => {
+export default function Home({ navigation }) {
+    const onPressGpaCalcualtorButton = () => {
         navigation.navigate('GpaCalculator')
+    }
+    const onPressCoursePlannerButton = () => {
+        navigation.navigate('CoursePlanner')
     }
 
     return (
         <View style={styles.section}>
-            <Button
-                onPress={onPressButton}
-                title="GPA Calculator"
-            />
-        </View>
+            <View style={styles.sectionButton}>
+                <Button
+                    onPress={onPressGpaCalcualtorButton}
+                    title="GPA Calculator"
+                />
+            </View>
+            <View style={styles.sectionButton}>
+                <Button
+                    onPress={onPressCoursePlannerButton}
+                    title="Course Planner"
+                />
+            </View >
+        </View >
     );
 }
 
 const styles = StyleSheet.create({
     section: {
-        backgroundColor: 'skyblue',
         marginTop: 35,
         padding: 24,
     },
-    textSection: {
+    sectionButton: {
+        backgroundColor: 'skyblue',
         fontSize: 13,
+        marginBottom: 12,
     }
 })
