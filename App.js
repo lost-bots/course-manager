@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "./screens/home";
 import GpaCalculator from "./screens/gpaCalculator";
+import CoursePlanner from "./screens/coursePlanner";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -16,9 +17,13 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Course Manager" }}
+          options={
+            { title: "Course Manager" },
+            { title: "Course Planner" }
+          }
         />
-        <Stack.Screen name="GpaCalculator" component={GpaCalculator} options={{title: "GPA Calculator"}}/>
+        <Stack.Screen name="GpaCalculator" component={GpaCalculator} options={{ title: "GPA Calculator" }} />
+        <Stack.Screen name="CoursePlanner" component={CoursePlanner} options={{ title: "Course Planner" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
